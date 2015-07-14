@@ -1,18 +1,15 @@
-cordova.define("cordova-plugin-hybrid.HybridBridge", function(require, exports, module) {
+cordova.define("cordova-plugin-hybrid.HybridBridge", function(require, exports, module) { var exec = require('cordova/exec'),
+    cordova = require('cordova');
 
-    var argscheck = require('cordova/argscheck'),
-        channel = require('cordova/channel'),
-        utils = require('cordova/utils'),
-        exec = require('cordova/exec'),
-        cordova = require('cordova');
+function HybridBridge() {
 
-    function HybridBridge() {
+}
+HybridBridge.prototype.addItem = function(item, successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "HybridBridge", "addItem", [item]);
+};
 
-    }
-    HybridBridge.prototype.addItem = function(item, successCallback, errorCallback) {
-        exec(successCallback, errorCallback, "HybridBridge", "addItem", [item]);
-    };
+module.exports = new HybridBridge();
 
-    module.exports = new HybridBridge();
+
 
 });

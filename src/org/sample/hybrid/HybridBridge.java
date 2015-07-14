@@ -7,7 +7,8 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.sample.hybridandroidapp.MyListActivity;
+
+import org.sample.hybridandroidapp.MyListActivity; //Needs to match yours if your package is different
 
 import java.util.ArrayList;
 
