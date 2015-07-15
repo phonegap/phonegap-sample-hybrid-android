@@ -4,8 +4,8 @@ cordova.define("cordova-plugin-hybrid.HybridBridge", function(require, exports, 
 function HybridBridge() {
 
 }
-HybridBridge.prototype.addItem = function(item, successCallback, errorCallback) {
-    exec(successCallback, errorCallback, "HybridBridge", "addItem", [item]);
+HybridBridge.prototype.addItem = function(item, classname, successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "HybridBridge", "addItem", [item, classname]);
 };
 
 module.exports = new HybridBridge();

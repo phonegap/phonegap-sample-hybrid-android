@@ -54,7 +54,7 @@ var app = {
     addItem: function() {
         console.log("Plugin ADD ITEM CALLED " + HybridBridge);
         var item = document.getElementById("bookmark").value;
-        HybridBridge.addItem(item,function(){console.log("Hybrid Bridge Success")},function(e){console.log("Hybrid Bridge Error" + e)});
+        HybridBridge.addItem(item, "org.sample.hybridandroidapp.MyListActivity", function(){console.log("Hybrid Bridge Success")},function(e){console.log("Hybrid Bridge Error" + e)});
     },
     showDeviceInfo: function(){
         var message = 'Cordova version: ' + device.cordova;
