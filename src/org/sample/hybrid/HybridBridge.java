@@ -1,5 +1,6 @@
 package org.sample.hybrid;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -7,8 +8,6 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
-
-import org.sample.hybridandroidapp.MyListActivity; //Needs to match yours if your package is different
 
 import java.util.ArrayList;
 
@@ -21,11 +20,12 @@ public class HybridBridge extends CordovaPlugin {
         try {
             if (action.equals("addItem")) {
                 String item = args.getString(0);
+                String className = args.getString(1);
                 Context context = cordova.getActivity().getApplicationContext();
-                Intent intent = new Intent(context,MyListActivity.class);
+                Intent intent = new Intent(context,Class.forName(className));
                 itemsList.add(item);
                 intent.putStringArrayListExtra("items", itemsList);
-                cordova.startActivityForResult((CordovaPlugin)this,intent,1);
+                cordova.startActivityForResult(this,intent,1);
                 callbackContext.success();
                 return true;
             }
@@ -38,7 +38,11 @@ public class HybridBridge extends CordovaPlugin {
         }
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        itemsList = data.getStringArrayListExtra("items");
+        // Handle a result here if one set in the Activity class started
+        System.out.println("Activity Result: " + resultCode); //-1 is RESULT_OK
+        if (resultCode==Activity.RESULT_OK) {
+            System.out.println("All good!");
+        }
     }
 
 }

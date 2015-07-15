@@ -32,7 +32,6 @@ public class MyListActivity extends ListActivity {
         /** Setting the adapter to the ListView */
         setListAdapter(adapter);
 
-        intent.putStringArrayListExtra("items",list); //Save off the list to be passed back in result
         setResult(RESULT_OK, intent);
     }
 
